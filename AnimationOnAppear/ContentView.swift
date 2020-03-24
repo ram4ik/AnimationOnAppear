@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isVisible = false
+    
     var body: some View {
-        Text("Hello, World!")
+        Text("Hello, SwiftUI!")
+            .font(.largeTitle)
+            .fontWeight(.black)
+            .opacity(isVisible ? 1 : 0)
+            .scaleEffect(isVisible ? 1.5 : 0)
+            .onAppear {
+                withAnimation(.spring(response: 0.4, dampingFraction: 0.2, blendDuration: 0)) {
+                    self.isVisible.toggle()
+                }
+        }
     }
 }
 
